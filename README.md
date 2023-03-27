@@ -34,7 +34,7 @@ mode: {train, infer, infer_mc}
 - **Fusion** (Voxel-based weighted fusion to suppress view-dependent artifacts)  
 *Calibrated to our 2- and 3-probe holder*   
 fusion_method: {alignment, maximum, average, addition, frustum}  
-Ours: frustum
+Ours: frustum  
 N: number of images, which are specified in <code>fuse_images.py</code>
 
         python fuse_images.py N fusion_method
