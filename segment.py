@@ -3,13 +3,12 @@ import sys
 import torch
 from torch.utils.data import DataLoader
 
-DATA_FILE = '/home/veronika/Code/muxtk/pubrepo/datainfo.xlsx'
-DATA_DIR = "/media/veronika/Veronika8TB/iFIND/Placenta/Data/single/images"
-LABEL_DIR = '/media/veronika/Veronika8TB/iFIND/Placenta/Data/single/labels/ESVZ'
-OUT_FOL = "/home/veronika/Out/test_placenta_project"
-SCRIPT_DIR = "/home/veronika/Code/muxtk/pubrepo"
+DATA_FILE = 'datainfo.xlsx'
+DATA_DIR = "../images"
+LABEL_DIR = '../labels'
+OUT_FOL = "../placenta_project"
+SCRIPT_DIR = "../multitask_seg_placenta"
 
-sys.path.insert(0, '/home/veronika/Code/muxtk')
 from src.dataset import data_utils
 from src.dataset.placenta_data import PlacentaT2Dataset as PlacentaT2Dataset
 from src.utils import python_utils as putils
