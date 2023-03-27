@@ -1,0 +1,23 @@
+name: placentaSeg
+channels:
+  - pytorch
+  - anaconda
+  - defaults
+  - conda-forge
+dependencies:
+  - cudatoolkit=11.0
+  - jupyterlab=3.0.14
+  - jupyterlab_server=2.8.2
+  - matplotlib
+  - numpy=1.21.2
+  - openpyxl=3.0.5
+  - pandas=1.2.1
+  - python=3.8.12
+  - pytorch=1.7.1
+  - pyyaml=6.0
+  - scikit-learn=0.23.2
+  - simpleitk=2.2.1
+  - torchaudio=0.7.2
+  - torchio=0.18.90
+  - torchvision=0.8.2
+  - yaml=0.2.5
