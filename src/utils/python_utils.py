@@ -2,6 +2,7 @@
 import math
 import torch
 import numpy as np
+import SimpleITK as sitk
 
 """
 Commonly used basic utilities
@@ -172,3 +173,27 @@ class OneHot(object):
             # in out along this same dim 1
             outputs.append(out)
         return outputs if idx > 0 else outputs[0]
+    
+def create_image_mask(in_image, closing=True, int_range=None):
+
+    print('Image masks')
+
+    mask = sitk.GetArrayFromImage(in_image)
+    mask[np.where(mask > 1e-3)] = 1
+    Mask = sitk.GetImageFromArray(mask)
+    Mask.SetOrigin(in_image.GetOrigin())
+    Mask.SetSpacing(in_image.GetSpacing())
+
+    Mask = sitk.Cast(Mask, sitk.sitkUInt8)
+
+    if closing:
+        vectorRadius = (5, 5, 5)
+        kernel = sitk.sitkBall
+        Mask = sitk.BinaryMorphologicalClosing(Mask, vectorRadius, kernel)
+    if int_range is not None:
+        Mask = sitk.RescaleIntensity(Mask, int_range[0], int_range[1])
+
+    for keys in in_image.GetMetaDataKeys():
+        Mask.SetMetaData(keys, in_image.GetMetaData(keys))
+
+    return Mask

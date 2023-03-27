@@ -7,7 +7,7 @@ This repository hosts the code of the article [Placenta Segmentation in Ultrasou
 ----
 
 # Usage
-mode = {train, infer, infer_mc}
+mode: {train, infer, infer_mc}
 
 - **EncNet** (Only classification)
 
@@ -28,6 +28,16 @@ mode = {train, infer, infer_mc}
 - **TMTUNet** (Multi-task Unet with classification and segmentation trained simultaneously; Encoder and classification head pretrained on classification)
 
         python multitask.py multi_config2 mode
+
+-----
+
+- **Fusion** (Voxel-based weighted fusion to suppress view-dependent artifacts)  
+*Calibrated to our 2- and 3-probe holder*   
+fusion_method: {alignment, maximum, average, addition, frustum}  
+Ours: frustum
+N: number of images, which are specified in <code>fuse_images.py</code>
+
+        python fuse_images.py N fusion_method
 
 # Data
 Information about data samples is provided in excel file <code>datainfo.xlsx</code> of the form:
